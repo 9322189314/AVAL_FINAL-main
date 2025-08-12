@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Talent Bridge Design System - Dark theme with glassmorphism */
+
+@layer base {
+  :root {
+    /* Dark Background System */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    /* Glassmorphic Cards */
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --glass: 222 47% 12%;
+    --glass-border: 222 47% 15%;
+
+    /* Navigation & UI */
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Brand Colors */
+    --primary: 270 91% 65%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 270 91% 75%;
+
+    /* Accent System */
+    --secondary: 222 47% 12%;
+    --secondary-foreground: 210 40% 98%;
+    --accent: 197 71% 52%;
+    --accent-foreground: 210 40% 98%;
+    --accent-glow: 197 71% 62%;
+
+    /* Utility Colors */
+    --muted: 222 47% 10%;
+    --muted-foreground: 215.4 16.3% 65%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders & Inputs */
+    --border: 222 47% 15%;
+    --input: 222 47% 12%;
+    --ring: 270 91% 65%;
+
+    /* Gradient System */
+    --gradient-primary: linear-gradient(135deg, hsl(270 91% 65%), hsl(197 71% 52%));
+    --gradient-dark: linear-gradient(180deg, hsl(222 47% 8%), hsl(222 47% 4%));
+    --gradient-glow: linear-gradient(135deg, hsl(270 91% 65% / 0.1), hsl(197 71% 52% / 0.1));
+
+    /* Glass Effects */
+    --glass-bg: hsl(222 47% 12% / 0.8);
+    --glass-border: hsl(222 47% 20% / 0.3);
+    --blur-amount: 16px;
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(270 91% 65% / 0.3);
+    --shadow-soft: 0 8px 32px hsl(222 47% 4% / 0.5);
+    --shadow-neumorphic: inset 0 1px 0 hsl(222 47% 20% / 0.2), 0 4px 16px hsl(222 47% 4% / 0.3);
+
+    /* Animation System */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: var(--gradient-dark);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glass Card Components */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-[16px] border border-glass-border rounded-2xl;
+    box-shadow: var(--shadow-soft), var(--shadow-neumorphic);
+  }
+
+  .glass-card-glow {
+    @apply glass-card;
+    box-shadow: var(--shadow-soft), var(--shadow-glow), var(--shadow-neumorphic);
+  }
+
+  /* Interactive Elements */
+  .interactive-card {
+    @apply glass-card transition-all duration-300 hover:scale-105 hover:bg-card/90;
+    transition: var(--transition-smooth);
+  }
+
+  .interactive-card:hover {
+    box-shadow: var(--shadow-soft), var(--shadow-glow), var(--shadow-neumorphic);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animated Backgrounds */
+  .bg-gradient-animated {
+    background: var(--gradient-glow);
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Floating Animation */
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Navbar Glassmorphism */
+  .navbar-glass {
+    @apply bg-card/20 backdrop-blur-[24px] border-b border-glass-border/30;
+    transition: var(--transition-smooth);
+  }
+
+  .navbar-glass.scrolled {
+    @apply bg-card/80 border-glass-border/60;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Hero CTA Large Card */
+  .hero-cta-card {
+    @apply glass-card-glow p-8 max-w-lg w-full;
+    background: var(--gradient-glow);
+  }
+
+  /* Button Variants */
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition-bounce);
+  }
+
+  .btn-primary:hover {
+    @apply scale-105;
+    box-shadow: var(--shadow-glow), var(--shadow-soft);
+  }
+
+  .btn-glass {
+    @apply glass-card px-6 py-3 font-semibold text-foreground hover:bg-card/90;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-glass:hover {
+    box-shadow: var(--shadow-soft), var(--shadow-glow);
+  }
+}
